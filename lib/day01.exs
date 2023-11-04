@@ -1,3 +1,4 @@
+# c "lib/day01.exs"
 defmodule Day01 do
   def make_modules(file) do
     {:ok, contents} = File.read(file)
@@ -11,35 +12,26 @@ defmodule Day01 do
     div(module, 3) - 2
   end
 
+  # Day01.answer_part_a
+  # 3337766
   def answer_part_a() do
     Enum.map(make_modules("resources/day01.txt"), &gas/1)
     |> Enum.sum()
   end
+
+  def gas_plus(module, acc \\ 0) do
+    new_gas = gas(module)
+
+    case new_gas do
+      new_gas when new_gas <= 0 -> acc
+      _ -> gas_plus(new_gas, acc + new_gas)
+    end
+  end
+
+  # Day01.answer_part_b
+  # 5003788
+  def answer_part_b() do
+    Enum.map(make_modules("resources/day01.txt"), &gas_plus/1)
+    |> Enum.sum()
+  end
 end
-
-# iex(1)> c "lib/day01.exs"
-# [Day01]
-# iex(2)> Day01.answer_part_a
-# 3337766
-
-
-
-
-
-# def large() do
-#   {:ok, csv} = File.read("day02.csv")
-
-#   [head | _tail] =
-#     csv
-#     |> String.trim_trailing()
-#     |> String.split(",")
-#     |> Enum.map(&String.to_integer/1)
-
-#   head
-# end
-# end
-
-# iex(3)> c "lib/day01.exs"
-# [Haiku]
-# iex(4)> Day01.haiku
-# iex(9)> r Day01
