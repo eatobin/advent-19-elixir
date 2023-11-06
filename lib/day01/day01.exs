@@ -1,4 +1,5 @@
-# c "lib/day01.exs"
+# c "lib/day01/day01.exs"
+# r Day01
 defmodule Day01 do
   def make_modules(file) do
     {:ok, contents} = File.read(file)
@@ -15,7 +16,7 @@ defmodule Day01 do
   # Day01.answer_part_a
   # 3337766
   def answer_part_a() do
-    Enum.map(make_modules("resources/day01.txt"), &gas/1)
+    Enum.map(make_modules("lib/day01/day01.txt"), &gas/1)
     |> Enum.sum()
   end
 
@@ -31,7 +32,7 @@ defmodule Day01 do
   # Day01.answer_part_b
   # 5003788
   def answer_part_b() do
-    Enum.map(make_modules("resources/day01.txt"), &gas_plus/1)
+    Enum.map(make_modules("lib/day01/day01.txt"), &gas_plus/1)
     |> Enum.sum()
   end
 end
