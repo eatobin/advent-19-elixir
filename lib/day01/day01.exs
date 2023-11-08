@@ -13,12 +13,14 @@ defmodule Day01 do
     div(module, 3) - 2
   end
 
-  # Day01.answer_part_a
-  # 3337766
-  def answer_part_a() do
-    Enum.map(make_modules("lib/day01/day01.txt"), &gas/1)
+  def answer_part_a(file) do
+    make_modules(file)
+    |> Enum.map(&gas/1)
     |> Enum.sum()
   end
+
+  # Day01.answer_part_a("lib/day01/day01.txt")
+  # 3337766
 
   def gas_plus(module, acc \\ 0) do
     new_gas = gas(module)
@@ -29,10 +31,12 @@ defmodule Day01 do
     end
   end
 
-  # Day01.answer_part_b
-  # 5003788
-  def answer_part_b() do
-    Enum.map(make_modules("lib/day01/day01.txt"), &gas_plus/1)
+  def answer_part_b(file) do
+    make_modules(file)
+    |> Enum.map(&gas_plus/1)
     |> Enum.sum()
   end
+
+  # Day01.answer_part_b("lib/day01/day01.txt")
+  # 5003788
 end
