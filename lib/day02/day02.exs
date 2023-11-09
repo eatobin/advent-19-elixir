@@ -10,7 +10,7 @@ defmodule Day02 do
       |> String.split(",")
       |> Enum.map(&String.to_integer/1)
 
-    keys = Enum.to_list(0..200)
+    keys = Enum.to_list(0..120)
 
     Enum.zip(keys, values) |> Enum.into(%{})
   end
