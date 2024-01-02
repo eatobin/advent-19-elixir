@@ -10,10 +10,11 @@ defmodule Day02 do
       |> String.split(",")
       |> Enum.map(&String.to_integer/1)
 
-    keys = Enum.to_list(0..120)
+    keys = Enum.to_list(0..(Enum.count(values) - 1))
 
     Enum.zip(keys, values) |> Enum.into(%{})
   end
 
+  memory = Day02.make_memory_map("lib/day02/day02.csv")
   # Day02.make_memory_map("lib/day02/day02.csv")
 end
