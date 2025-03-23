@@ -1,3 +1,4 @@
+# $ iex -S mix
 # c "lib/day02/day02.exs"
 # r Day02
 defmodule Day02 do
@@ -15,6 +16,6 @@ defmodule Day02 do
     Enum.zip(keys, values) |> Enum.into(%{})
   end
 
-  memory = Day02.make_memory_map("lib/day02/day02.csv")
+  # memory = Day02.make_memory_map("lib/day02/day02.csv")
   # Day02.make_memory_map("lib/day02/day02.csv")
 end

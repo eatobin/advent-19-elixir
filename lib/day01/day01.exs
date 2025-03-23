@@ -1,4 +1,6 @@
+# $ iex -S mix
 # c "lib/day01/day01.exs"
+# to reload:
 # r Day01
 defmodule Day01 do
   def make_modules(file) do
