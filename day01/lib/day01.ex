@@ -1,6 +1,6 @@
 defmodule Day01 do
   def make_modules(file) do
-    {:ok, contents} = File.read(file)
+    contents = File.read!(file)
 
     contents
     |> String.split("\n", trim: true)
