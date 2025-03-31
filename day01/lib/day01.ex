@@ -1,5 +1,3 @@
-# c "lib/day01/day01.exs"
-# r Day01
 defmodule Day01 do
   def make_modules(file) do
     {:ok, contents} = File.read(file)
@@ -19,7 +17,7 @@ defmodule Day01 do
     |> Enum.sum()
   end
 
-  # Day01.answer_part_a("lib/day01/day01.txt")
+  # Day01.answer_part_a("lib/day01.txt")
   # 3337766
 
   def gas_plus(module, acc \\ 0) do
@@ -37,6 +35,6 @@ defmodule Day01 do
     |> Enum.sum()
   end
 
-  # Day01.answer_part_b("lib/day01/day01.txt")
+  # Day01.answer_part_b("lib/day01.txt")
   # 5003788
 end
