@@ -136,7 +136,7 @@ defmodule Day01 do
   # 5003788
 
   def my_test() do
-    v = new(1..3)
+    v = new(1..7)
     get(v, 0)
     set(v, 1, :two)
   end
