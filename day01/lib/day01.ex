@@ -142,7 +142,11 @@ defmodule Day01 do
   end
 end
 
-# PersistentVector<count: 7, [1, 2, 3, 4, 5, 6, 7]>
+# import(PersistentVector)
+# iex(2)> import(PersistentVector)
+# PersistentVector
+# iex(3)> v = new(1..10)
+# #PersistentVector<count: 10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]>
 # iex(4)> get(v,4)
 # 5
 # iex(5)> v
