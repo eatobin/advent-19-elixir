@@ -1,6 +1,4 @@
 defmodule Day01 do
-  import(PersistentVector)
-
   @my_modules [
     68958,
     82218,
@@ -134,31 +132,4 @@ defmodule Day01 do
 
   # Day01.answer_part_b()
   # 5003788
-
-  def my_test() do
-    v = new(1..7)
-    get(v, 0)
-    set(v, 1, :two)
-  end
 end
-
-# import(PersistentVector)
-# iex(2)> import(PersistentVector)
-# PersistentVector
-# iex(3)> v = new(1..10)
-# #PersistentVector<count: 10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]>
-# iex(4)> get(v,4)
-# 5
-# iex(5)> v
-# #PersistentVector<count: 7, [1, 2, 3, 4, 5, 6, 7]>
-# iex(6)> set(v, 1, :two)
-# #PersistentVector<count: 7, [1, :two, 3, 4, 5, 6, 7]>
-# iex(7)> v
-# #PersistentVector<count: 7, [1, 2, 3, 4, 5, 6, 7]>
-# iex(8)> v9 = set(v, 1, :two)
-# #PersistentVector<count: 7, [1, :two, 3, 4, 5, 6, 7]>
-# iex(9)> v
-# #PersistentVector<count: 7, [1, 2, 3, 4, 5, 6, 7]>
-# iex(10)> v9
-# #PersistentVector<count: 7, [1, :two, 3, 4, 5, 6, 7]>
-# iex(11)>
