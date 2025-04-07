@@ -141,7 +141,40 @@ defmodule Day02 do
     get(v, 0)
     set(v, 1, :two)
   end
+
+  def test2({x, y, z}) do
+    case {x, y, z} do
+      {4, 5, 6} -> "4, 5, 6"
+      {1, g, 3} -> g * 9
+      _ -> "This clause would match any value"
+    end
+  end
+
+  def test3(r) do
+    case r do
+      1 -> "This is a one"
+      2 -> "This is a two"
+      _ -> "This is anything else"
+    end
+  end
 end
+
+defmodule Recursion do
+  def print_multiple_times(_msg, 0) do
+    :ok
+  end
+
+  def print_multiple_times(msg, n) when n > 0 do
+    IO.puts(msg)
+    print_multiple_times(msg, n - 1)
+  end
+end
+
+# Recursion.print_multiple_times("Hello!", 3)
+# # Hello!
+# # Hello!
+# # Hello!
+# :ok
 
 # [eric@eric-minisforum day02](dev)$ iex -S mix
 # Erlang/OTP 27 [erts-15.2.4] [source] [64-bit] [smp:20:20] [ds:20:20:10] [async-threads:1] [jit:ns]
