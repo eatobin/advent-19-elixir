@@ -164,8 +164,9 @@ defmodule Recursion do
     :ok
   end
 
-  def print_multiple_times(msg, n) when n > 0 do
+  def print_multiple_times(msg, n) do
     IO.puts(msg)
+    IO.puts(n)
     print_multiple_times(msg, n - 1)
   end
 end
