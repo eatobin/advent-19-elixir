@@ -48,8 +48,9 @@ defmodule Day02 do
             memory:
               set(
                 intcode.memory,
-                intcode.memory[3],
-                intcode.memory[intcode.memory[1]] + intcode.memory[intcode.memory[2]]
+                intcode.memory[intcode.pointer + 3],
+                intcode.memory[intcode.memory[intcode.pointer + 1]] +
+                  intcode.memory[intcode.memory[intcode.pointer + 2]]
               )
         })
 
@@ -60,8 +61,9 @@ defmodule Day02 do
             memory:
               set(
                 intcode.memory,
-                intcode.memory[3],
-                intcode.memory[intcode.memory[1]] * intcode.memory[intcode.memory[2]]
+                intcode.memory[intcode.pointer + 3],
+                intcode.memory[intcode.memory[intcode.pointer + 1]] *
+                  intcode.memory[intcode.memory[intcode.pointer + 2]]
               )
         })
 
