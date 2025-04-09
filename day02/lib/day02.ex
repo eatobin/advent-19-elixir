@@ -1,5 +1,5 @@
 defmodule Intcode do
-  @memory_list [91, 0, 0, 3, 99]
+  @memory_list [1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
 
   defmacro memory_list, do: @memory_list
   defstruct [:pointer, :memory]
@@ -38,15 +38,35 @@ defmodule Day02 do
 
   def opcode(intcode) do
     case intcode.memory[intcode.pointer] do
+      99 ->
+        intcode
+
       1 ->
-        set(
-          intcode.memory,
-          intcode.memory[3],
-          intcode.memory[intcode.memory[1]] + intcode.memory[intcode.memory[2]]
-        )
+        %{
+          intcode
+          | pointer: intcode.pointer + 4,
+            memory:
+              set(
+                intcode.memory,
+                intcode.memory[3],
+                intcode.memory[intcode.memory[1]] + intcode.memory[intcode.memory[2]]
+              )
+        }
+
+      2 ->
+        %{
+          intcode
+          | pointer: intcode.pointer + 4,
+            memory:
+              set(
+                intcode.memory,
+                intcode.memory[3],
+                intcode.memory[intcode.memory[1]] * intcode.memory[intcode.memory[2]]
+              )
+        }
 
       _ ->
-        "This is anything else"
+        "Invalid opcode"
     end
   end
 end
