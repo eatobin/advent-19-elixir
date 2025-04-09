@@ -128,7 +128,7 @@ defmodule Intcode do
 end
 
 defmodule Day02 do
-  import(PersistentVector)
+  import(Aja.Vector)
   require Intcode
   @memory_list Intcode.memory_list()
 
@@ -142,7 +142,7 @@ defmodule Day02 do
           intcode
           | pointer: intcode.pointer + 4,
             memory:
-              set(
+              replace_at(
                 intcode.memory,
                 intcode.memory[intcode.pointer + 3],
                 intcode.memory[intcode.memory[intcode.pointer + 1]] +
@@ -155,7 +155,7 @@ defmodule Day02 do
           intcode
           | pointer: intcode.pointer + 4,
             memory:
-              set(
+              replace_at(
                 intcode.memory,
                 intcode.memory[intcode.pointer + 3],
                 intcode.memory[intcode.memory[intcode.pointer + 1]] *
@@ -170,7 +170,7 @@ defmodule Day02 do
 
   def updated_memory(noun, verb) do
     ic = %Intcode{pointer: 0, memory: new(@memory_list)}
-    set(ic.memory, 1, noun) |> set(2, verb)
+    replace_at(ic.memory, 1, noun) |> replace_at(2, verb)
   end
 
   def answer_a() do
@@ -179,4 +179,4 @@ defmodule Day02 do
   end
 end
 
-# iex(1)> import(PersistentVector)
+# iex(1)> import(Aja.Vector)
