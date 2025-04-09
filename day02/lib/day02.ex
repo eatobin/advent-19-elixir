@@ -42,7 +42,7 @@ defmodule Day02 do
         intcode
 
       1 ->
-        %{
+        opcode(%{
           intcode
           | pointer: intcode.pointer + 4,
             memory:
@@ -51,10 +51,10 @@ defmodule Day02 do
                 intcode.memory[3],
                 intcode.memory[intcode.memory[1]] + intcode.memory[intcode.memory[2]]
               )
-        }
+        })
 
       2 ->
-        %{
+        opcode(%{
           intcode
           | pointer: intcode.pointer + 4,
             memory:
@@ -63,7 +63,7 @@ defmodule Day02 do
                 intcode.memory[3],
                 intcode.memory[intcode.memory[1]] * intcode.memory[intcode.memory[2]]
               )
-        }
+        })
 
       _ ->
         "Invalid opcode"
