@@ -175,46 +175,18 @@ defmodule Day02 do
 
   def answer_a() do
     Day02.opcode(%Intcode{pointer: 0, memory: updated_memory(12, 2)}).memory[0]
-    # Answer = 2890696
   end
+
+  # Answer = 2890696
+
+  def answer_b() do
+    for noun <- 0..99,
+        verb <- 0..99,
+        Day02.opcode(%Intcode{pointer: 0, memory: updated_memory(noun, verb)}).memory[0] ==
+          19_690_720 do
+      100 * noun + verb
+    end
+  end
+
+  # Answer = 8226
 end
-
-def noun_verb() do
-  for noun <- 0..99, verb <- 0..99, noun + verb < 50
-  {noun, verb}
-end
-
-# last_names =
-#   for friend <- friends do
-#     friend.last_name
-#   end
-
-# my_t =
-#   for n <- 0..5, rem(n, 3) == 0 do
-#     n * n
-#   end
-
-# my_d =
-#   for i <- [:a, :b, :c], j <- [1, 2] do
-#     {i, j}
-#   end
-
-# for i <- [:a, :b, :c], j <- [1, 2], do:  {i, j}
-# [a: 1, a: 2, b: 1, b: 2, c: 1, c: 2]
-
-# for n <- 0..5, rem(n, 3) == 0, do: n * n
-# [0, 9]
-
-# ;part b
-# (def noun-verb
-#   (vec (for [noun (range 0 100)
-#              verb (range 0 100)
-#              :let [candidate ((:memory (ic/op-code {:input 0 :output [] :phase nil :pointer 0 :relative-base 0 :memory (updated-memory noun verb) :stopped? false :recur? true})) 0)]
-#              :when (= candidate 19690720)]
-#          [candidate noun verb (+ (* 100 noun) verb)])))
-
-# (comment (last (first noun-verb)))
-
-# ;8226
-
-# iex(1)> import(Aja.Vector)
