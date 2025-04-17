@@ -180,12 +180,14 @@ defmodule Day02 do
   # Answer = 2890696
 
   def answer_b() do
-    for noun <- 0..99,
-        verb <- 0..99,
-        Day02.opcode(%Intcode{pointer: 0, memory: updated_memory(noun, verb)}).memory[0] ==
-          19_690_720 do
-      100 * noun + verb
-    end
+    List.first(
+      for noun <- 0..99,
+          verb <- 0..99,
+          Day02.opcode(%Intcode{pointer: 0, memory: updated_memory(noun, verb)}).memory[0] ==
+            19_690_720 do
+        100 * noun + verb
+      end
+    )
   end
 
   # Answer = 8226
