@@ -1,136 +1,41 @@
 defmodule Intcode do
-  @memory_list [
-    1,
-    0,
-    0,
-    3,
-    1,
-    1,
-    2,
-    3,
-    1,
-    3,
-    4,
-    3,
-    1,
-    5,
-    0,
-    3,
-    2,
-    10,
-    1,
-    19,
-    2,
-    9,
-    19,
-    23,
-    2,
-    13,
-    23,
-    27,
-    1,
-    6,
-    27,
-    31,
-    2,
-    6,
-    31,
-    35,
-    2,
-    13,
-    35,
-    39,
-    1,
-    39,
-    10,
-    43,
-    2,
-    43,
-    13,
-    47,
-    1,
-    9,
-    47,
-    51,
-    1,
-    51,
-    13,
-    55,
-    1,
-    55,
-    13,
-    59,
-    2,
-    59,
-    13,
-    63,
-    1,
-    63,
-    6,
-    67,
-    2,
-    6,
-    67,
-    71,
-    1,
-    5,
-    71,
-    75,
-    2,
-    6,
-    75,
-    79,
-    1,
-    5,
-    79,
-    83,
-    2,
-    83,
-    6,
-    87,
-    1,
-    5,
-    87,
-    91,
-    1,
-    6,
-    91,
-    95,
-    2,
-    95,
-    6,
-    99,
-    1,
-    5,
-    99,
-    103,
-    1,
-    6,
-    103,
-    107,
-    1,
-    107,
-    2,
-    111,
-    1,
-    111,
-    5,
-    0,
-    99,
-    2,
-    14,
-    0,
-    0
-  ]
+  @memory_list [1002, 4, 3, 4, 33]
 
   defmacro memory_list, do: @memory_list
-  defstruct [:pointer, :memory]
+  defstruct [:input, :output, :pointer, :memory]
 end
 
+# Instruction:
+# ABCDE
+# 01234
+# 01002
+# 34 - two-digit opcode,      02 == opcode 2
+#  2 - mode of 1st parameter,  0 == position mode
+#  1 - mode of 2nd parameter,  1 == immediate mode
+#  0 - mode of 3rd parameter,  0 == position mode,
+#                                   omitted due to being a leading zero
+# 0 1 or 2 = left-to-right position after 2 digit opcode
+# p i or r = position, immediate or relative mode
+# r or w = read or write
+
 defmodule Day05 do
-  import(Aja.Vector)
+  import Aja.Vector
   require Intcode
   @memory_list Intcode.memory_list()
+
+  # offsetC = 1
+  # offsetB = 2
+  # offsetA = 3
+
+  def pad5(op) do
+    char_list =
+      op
+      |> Integer.to_string()
+      |> String.pad_leading(5, "0")
+      |> String.to_charlist()
+
+    for i <- char_list, into: Aja.Vector.new(), do: i - 48
+  end
 
   def opcode(intcode) do
     case intcode.memory[intcode.pointer] do
