@@ -196,10 +196,9 @@ defmodule Day05 do
   end
 
   def opcode(intcode) do
-    case intcode.memory[intcode.pointer] do
-      99 ->
-        intcode
+    instruction = Day05.pad5(intcode.memory[intcode.pointer])
 
+    case instruction[4] do
       1 ->
         opcode(%{
           intcode
@@ -207,11 +206,23 @@ defmodule Day05 do
             memory:
               replace_at(
                 intcode.memory,
-                intcode.memory[intcode.pointer + 3],
+                intcode.memory[a_param(instruction, intcode.pointer, intcode.memory)],
                 intcode.memory[intcode.memory[intcode.pointer + 1]] +
                   intcode.memory[intcode.memory[intcode.pointer + 2]]
               )
         })
+
+      # opcode(%{
+      #   intcode
+      #   | pointer: intcode.pointer + 4,
+      #     memory:
+      #       replace_at(
+      #         intcode.memory,
+      #         intcode.memory[a_param(instruction, intcode.pointer, intcode.memory)],
+      #         intcode.memory[c_param(instruction, intcode.pointer, intcode.memory)] +
+      #           intcode.memory[b_param(instruction, intcode.pointer, intcode.memory)]
+      #       )
+      # })
 
       2 ->
         opcode(%{
@@ -225,6 +236,9 @@ defmodule Day05 do
                   intcode.memory[intcode.memory[intcode.pointer + 2]]
               )
         })
+
+      9 ->
+        intcode
 
       _ ->
         "Invalid opcode"
