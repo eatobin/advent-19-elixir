@@ -896,14 +896,9 @@ defmodule Day05 do
 
   # Answer = 9025675
 
-  # def answer_b() do
-  #   for noun <- 0..99,
-  #       verb <- 0..99,
-  #       Day05.opcode(%Intcode{pointer: 0, memory: updated_memory(noun, verb)}).memory[0] ==
-  #         19_690_720 do
-  #     100 * noun + verb
-  #   end
-  # end
+  def answer_b() do
+    Day05.opcode(%Intcode{input: 5, output: 0, pointer: 0, memory: new(@memory_list)}).output
+  end
 
-  # Answer = 8226
+  # Answer = 11981754
 end
