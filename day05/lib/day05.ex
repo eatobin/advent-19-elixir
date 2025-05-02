@@ -219,9 +219,9 @@ defmodule Day05 do
             memory:
               replace_at(
                 intcode.memory,
-                intcode.memory[intcode.pointer + 3],
-                intcode.memory[intcode.memory[intcode.pointer + 1]] *
-                  intcode.memory[intcode.memory[intcode.pointer + 2]]
+                a_param(instruction, intcode.pointer, intcode.memory),
+                c_param(instruction, intcode.pointer, intcode.memory) *
+                  b_param(instruction, intcode.pointer, intcode.memory)
               )
         })
 
