@@ -145,9 +145,9 @@ defmodule Day05 do
   require Intcode
   @memory_list Intcode.memory_list()
 
-  # offsetC = 1
-  # offsetB = 2
-  # offsetA = 3
+  @offset_c 1
+  @offset_b 2
+  @offset_a 3
 
   def pad5(op) do
     char_list =
@@ -157,6 +157,42 @@ defmodule Day05 do
       |> String.to_charlist()
 
     for i <- char_list, into: Aja.Vector.new(), do: i - 48
+  end
+
+  def a_param(instruction, pointer, memory) do
+    case instruction[0] do
+      # a-p-w
+      0 -> memory[pointer + @offset_a]
+      _ -> "Invalid a_param"
+    end
+  end
+
+  def b_param(instruction, pointer, memory) do
+    case instruction[1] do
+      # b-p-r
+      0 -> memory[memory[pointer + @offset_b]]
+      # b-i-r
+      1 -> memory[pointer + @offset_b]
+      _ -> "Invalid a_param"
+    end
+  end
+
+  def c_param(instruction, pointer, memory) do
+    if instruction[4] == 3 do
+      case instruction[2] do
+        # c-p-w
+        0 -> memory[pointer + @offset_c]
+        _ -> "Invalid a_param"
+      end
+    else
+      case instruction[2] do
+        # c-p-r
+        0 -> memory[memory[pointer + @offset_c]]
+        # c-i-r
+        1 -> memory[pointer + @offset_c]
+        _ -> "Invalid a_param"
+      end
+    end
   end
 
   def opcode(intcode) do
