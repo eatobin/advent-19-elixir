@@ -200,29 +200,17 @@ defmodule Day05 do
 
     case instruction[4] do
       1 ->
-        opcode(%{
-          intcode
-          | pointer: intcode.pointer + 4,
-            memory:
-              replace_at(
-                intcode.memory,
-                intcode.memory[a_param(instruction, intcode.pointer, intcode.memory)],
-                intcode.memory[intcode.memory[intcode.pointer + 1]] +
-                  intcode.memory[intcode.memory[intcode.pointer + 2]]
-              )
-        })
-
-      # opcode(%{
-      #   intcode
-      #   | pointer: intcode.pointer + 4,
-      #     memory:
-      #       replace_at(
-      #         intcode.memory,
-      #         intcode.memory[a_param(instruction, intcode.pointer, intcode.memory)],
-      #         intcode.memory[c_param(instruction, intcode.pointer, intcode.memory)] +
-      #           intcode.memory[b_param(instruction, intcode.pointer, intcode.memory)]
-      #       )
-      # })
+      opcode(%{
+        intcode
+        | pointer: intcode.pointer + 4,
+          memory:
+            replace_at(
+              intcode.memory,
+              a_param(instruction, intcode.pointer, intcode.memory),
+              c_param(instruction, intcode.pointer, intcode.memory) +
+                b_param(instruction, intcode.pointer, intcode.memory)
+            )
+      })
 
       2 ->
         opcode(%{
