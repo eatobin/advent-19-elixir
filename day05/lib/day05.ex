@@ -297,6 +297,32 @@ defmodule Day05 do
           })
         end
 
+      8 ->
+        if c_param(instruction, intcode.pointer, intcode.memory) ==
+             b_param(instruction, intcode.pointer, intcode.memory) do
+          opcode(%{
+            intcode
+            | pointer: intcode.pointer + 4,
+              memory:
+                replace_at(
+                  intcode.memory,
+                  a_param(instruction, intcode.pointer, intcode.memory),
+                  1
+                )
+          })
+        else
+          opcode(%{
+            intcode
+            | pointer: intcode.pointer + 4,
+              memory:
+                replace_at(
+                  intcode.memory,
+                  a_param(instruction, intcode.pointer, intcode.memory),
+                  0
+                )
+          })
+        end
+
       9 ->
         intcode
 
