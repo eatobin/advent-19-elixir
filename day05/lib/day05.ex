@@ -196,6 +196,7 @@ defmodule Day05 do
   end
 
   def opcode(intcode) do
+    # defstruct [:input, :output, :pointer, :memory]
     instruction = Day05.pad5(intcode.memory[intcode.pointer])
 
     case instruction[4] do
@@ -235,6 +236,13 @@ defmodule Day05 do
                 c_param(instruction, intcode.pointer, intcode.memory),
                 intcode.input
               )
+        })
+
+      4 ->
+        opcode(%{
+          intcode
+          | pointer: intcode.pointer + 2,
+            output: c_param(instruction, intcode.pointer, intcode.memory)
         })
 
       9 ->
