@@ -258,6 +258,19 @@ defmodule Day05 do
           })
         end
 
+      6 ->
+        if c_param(instruction, intcode.pointer, intcode.memory) == 0 do
+          opcode(%{
+            intcode
+            | pointer: b_param(instruction, intcode.pointer, intcode.memory)
+          })
+        else
+          opcode(%{
+            intcode
+            | pointer: intcode.pointer + 3
+          })
+        end
+
       9 ->
         intcode
 
