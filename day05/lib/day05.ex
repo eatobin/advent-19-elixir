@@ -225,6 +225,18 @@ defmodule Day05 do
               )
         })
 
+      3 ->
+        opcode(%{
+          intcode
+          | pointer: intcode.pointer + 2,
+            memory:
+              replace_at(
+                intcode.memory,
+                c_param(instruction, intcode.pointer, intcode.memory),
+                intcode.input
+              )
+        })
+
       9 ->
         intcode
 
