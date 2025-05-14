@@ -134,9 +134,6 @@ defmodule Day02 do
 
   def opcode(intcode) do
     case intcode.memory[intcode.pointer] do
-      99 ->
-        intcode
-
       1 ->
         opcode(%{
           intcode
@@ -163,8 +160,8 @@ defmodule Day02 do
               )
         })
 
-      _ ->
-        "Invalid opcode"
+      99 ->
+        intcode
     end
   end
 
