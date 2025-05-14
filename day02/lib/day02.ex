@@ -131,6 +131,9 @@ defmodule Day02 do
   import(Aja.Vector)
   require Intcode
   @memory_list Intcode.memory_list()
+  @offset_c 1
+  @offset_b 2
+  @offset_a 3
 
   def opcode(intcode) do
     case intcode.memory[intcode.pointer] do
@@ -141,9 +144,9 @@ defmodule Day02 do
             memory:
               replace_at(
                 intcode.memory,
-                intcode.memory[intcode.pointer + 3],
-                intcode.memory[intcode.memory[intcode.pointer + 1]] +
-                  intcode.memory[intcode.memory[intcode.pointer + 2]]
+                intcode.memory[intcode.pointer + @offset_a],
+                intcode.memory[intcode.memory[intcode.pointer + @offset_c]] +
+                  intcode.memory[intcode.memory[intcode.pointer + @offset_b]]
               )
         })
 
