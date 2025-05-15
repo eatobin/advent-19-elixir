@@ -112,6 +112,10 @@ defmodule Day01 do
     |> Enum.sum()
   end
 
+  def print_a() do
+    IO.puts("Part A answer: #{answer_part_a()}, correct: 3337766")
+  end
+
   # Day01.answer_part_a()
   # 3337766
 
@@ -128,6 +132,10 @@ defmodule Day01 do
     @my_modules
     |> Enum.map(&gas_plus/1)
     |> Enum.sum()
+  end
+
+  def print_b() do
+    IO.puts("Part B answer: #{answer_part_b()}, correct: 5003788")
   end
 
   # Day01.answer_part_b()
