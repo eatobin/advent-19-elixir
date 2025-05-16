@@ -116,8 +116,11 @@ defmodule Day01 do
     IO.puts("Part A answer: #{answer_part_a()}, correct: 3337766")
   end
 
+  # [eric@linux-epth day01](dev)$ mix print_a
+  # [eric@linux-epth day01](dev)$ iex -S mix
   # Day01.answer_part_a()
   # 3337766
+  # Day01.print_a()
 
   def gas_plus(module, acc \\ 0) do
     new_gas = gas(module)
@@ -138,6 +141,18 @@ defmodule Day01 do
     IO.puts("Part B answer: #{answer_part_b()}, correct: 5003788")
   end
 
+  # [eric@linux-epth day01](dev)$ mix print_b
+  # [eric@linux-epth day01](dev)$ iex -S mix
   # Day01.answer_part_b()
   # 5003788
+  # Day01.print_b()
+
+  # [eric@linux-epth day01](dev)$ mix main
+  # [eric@linux-epth day01](dev)$ iex -S mix
+  # Day01.print_main()
+
+  def print_main() do
+    IO.puts("Part A answer: #{answer_part_a()}, correct: 3337766")
+    IO.puts("Part B answer: #{answer_part_b()}, correct: 5003788")
+  end
 end
