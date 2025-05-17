@@ -173,13 +173,21 @@ defmodule Day02 do
     replace_at(ic.memory, 1, noun) |> replace_at(2, verb)
   end
 
-  def answer_a() do
+  def answer_part_a() do
     Day02.opcode(%Intcode{pointer: 0, memory: updated_memory(12, 2)}).memory[0]
   end
 
-  # Answer = 2890696
+  def print_a() do
+    IO.puts("Part A answer: #{answer_part_a()}, correct: 2890696")
+  end
 
-  def answer_b() do
+  # [eric@linux-epth day02](dev)$ mix print_a
+  # [eric@linux-epth day02](dev)$ iex -S mix
+  # Day02.answer_part_a()
+  # 2890696
+  # Day02.print_a()
+
+  def answer_part_b() do
     List.first(
       for noun <- 0..99,
           verb <- 0..99,
@@ -190,5 +198,22 @@ defmodule Day02 do
     )
   end
 
-  # Answer = 8226
+  def print_b() do
+    IO.puts("Part B answer: #{answer_part_b()}, correct: 8226")
+  end
+
+  # [eric@linux-epth day02](dev)$ mix print_b
+  # [eric@linux-epth day02](dev)$ iex -S mix
+  # Day02.answer_part_b()
+  # 8226
+  # Day02.print_b()
+
+  def print_main() do
+    IO.puts("Part A answer: #{answer_part_a()}, correct: 2890696")
+    IO.puts("Part B answer: #{answer_part_b()}, correct: 8226")
+  end
+
+  # [eric@linux-epth day02](dev)$ mix main
+  # [eric@linux-epth day02](dev)$ iex -S mix
+  # Day02.print_main()
 end
