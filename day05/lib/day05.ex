@@ -720,7 +720,6 @@ defmodule Day05 do
     case instruction[0] do
       # a-p-w
       0 -> memory[pointer + @offset_a]
-      _ -> "Invalid a_param"
     end
   end
 
@@ -730,7 +729,6 @@ defmodule Day05 do
       0 -> memory[memory[pointer + @offset_b]]
       # b-i-r
       1 -> memory[pointer + @offset_b]
-      _ -> "Invalid a_param"
     end
   end
 
@@ -739,7 +737,6 @@ defmodule Day05 do
       case instruction[2] do
         # c-p-w
         0 -> memory[pointer + @offset_c]
-        _ -> "Invalid a_param"
       end
     else
       case instruction[2] do
@@ -747,7 +744,6 @@ defmodule Day05 do
         0 -> memory[memory[pointer + @offset_c]]
         # c-i-r
         1 -> memory[pointer + @offset_c]
-        _ -> "Invalid a_param"
       end
     end
   end
@@ -882,9 +878,6 @@ defmodule Day05 do
 
       9 ->
         intcode
-
-      _ ->
-        "Invalid opcode"
     end
   end
 
