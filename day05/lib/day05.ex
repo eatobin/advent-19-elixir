@@ -887,11 +887,22 @@ defmodule Day05 do
     Day05.opcode(%Intcode{input: 1, output: 0, pointer: 0, memory: new(@memory_list)}).output
   end
 
-  # Answer = 9025675
+  # iex -S mix
+  # Day05.answer_a()
 
   def answer_b() do
     Day05.opcode(%Intcode{input: 5, output: 0, pointer: 0, memory: new(@memory_list)}).output
   end
 
-  # Answer = 11981754
+  # iex -S mix
+  # Day05.answer_b()
+
+  def print_main() do
+    IO.puts("Part A answer: #{answer_a()}, correct: 9025675")
+    IO.puts("Part B answer: #{answer_b()}, correct: 11981754")
+  end
+
+  # mix print_main
+  # iex -S mix
+  # Day05.print_main()
 end
