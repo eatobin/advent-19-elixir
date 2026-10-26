@@ -698,7 +698,7 @@ end
 # r or w = read or write
 
 defmodule Day05 do
-  import Aja.Vector
+  # import Aja.Vector
   require Intcode
   @memory_list Intcode.memory_list()
 
@@ -758,7 +758,7 @@ defmodule Day05 do
           intcode
           | pointer: intcode.pointer + 4,
             memory:
-              replace_at(
+              Aja.Vector.replace_at(
                 intcode.memory,
                 a_param(instruction, intcode.pointer, intcode.memory),
                 c_param(instruction, intcode.pointer, intcode.memory) +
@@ -771,7 +771,7 @@ defmodule Day05 do
           intcode
           | pointer: intcode.pointer + 4,
             memory:
-              replace_at(
+              Aja.Vector.replace_at(
                 intcode.memory,
                 a_param(instruction, intcode.pointer, intcode.memory),
                 c_param(instruction, intcode.pointer, intcode.memory) *
@@ -784,7 +784,7 @@ defmodule Day05 do
           intcode
           | pointer: intcode.pointer + 2,
             memory:
-              replace_at(
+              Aja.Vector.replace_at(
                 intcode.memory,
                 c_param(instruction, intcode.pointer, intcode.memory),
                 intcode.input
@@ -831,7 +831,7 @@ defmodule Day05 do
             intcode
             | pointer: intcode.pointer + 4,
               memory:
-                replace_at(
+                Aja.Vector.replace_at(
                   intcode.memory,
                   a_param(instruction, intcode.pointer, intcode.memory),
                   1
@@ -842,7 +842,7 @@ defmodule Day05 do
             intcode
             | pointer: intcode.pointer + 4,
               memory:
-                replace_at(
+                Aja.Vector.replace_at(
                   intcode.memory,
                   a_param(instruction, intcode.pointer, intcode.memory),
                   0
@@ -857,7 +857,7 @@ defmodule Day05 do
             intcode
             | pointer: intcode.pointer + 4,
               memory:
-                replace_at(
+                Aja.Vector.replace_at(
                   intcode.memory,
                   a_param(instruction, intcode.pointer, intcode.memory),
                   1
@@ -868,7 +868,7 @@ defmodule Day05 do
             intcode
             | pointer: intcode.pointer + 4,
               memory:
-                replace_at(
+                Aja.Vector.replace_at(
                   intcode.memory,
                   a_param(instruction, intcode.pointer, intcode.memory),
                   0
@@ -884,14 +884,14 @@ defmodule Day05 do
   # defstruct [:input, :output, :pointer, :memory]
 
   def answer_a() do
-    Day05.opcode(%Intcode{input: 1, output: 0, pointer: 0, memory: new(@memory_list)}).output
+    Day05.opcode(%Intcode{input: 1, output: 0, pointer: 0, memory: Aja.Vector.new(@memory_list)}).output
   end
 
   # iex -S mix
   # Day05.answer_a()
 
   def answer_b() do
-    Day05.opcode(%Intcode{input: 5, output: 0, pointer: 0, memory: new(@memory_list)}).output
+    Day05.opcode(%Intcode{input: 5, output: 0, pointer: 0, memory: Aja.Vector.new(@memory_list)}).output
   end
 
   # iex -S mix
