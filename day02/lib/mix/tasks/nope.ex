@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.PrintB do
+defmodule Mix.Tasks.PrintBeta do
   @moduledoc "The hello mix task: `mix help print_b`"
   use Mix.Task
 

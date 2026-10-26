@@ -128,7 +128,7 @@ defmodule Intcode do
 end
 
 defmodule Day02 do
-  import(Aja.Vector)
+  # import(Aja.Vector)
   require Intcode
   @memory_list Intcode.memory_list()
   @offset_c 1
@@ -142,7 +142,7 @@ defmodule Day02 do
           intcode
           | pointer: intcode.pointer + 4,
             memory:
-              replace_at(
+              Aja.Vector.replace_at(
                 intcode.memory,
                 intcode.memory[intcode.pointer + @offset_a],
                 intcode.memory[intcode.memory[intcode.pointer + @offset_c]] +
@@ -155,7 +155,7 @@ defmodule Day02 do
           intcode
           | pointer: intcode.pointer + 4,
             memory:
-              replace_at(
+              Aja.Vector.replace_at(
                 intcode.memory,
                 intcode.memory[intcode.pointer + 3],
                 intcode.memory[intcode.memory[intcode.pointer + 1]] *
@@ -169,8 +169,8 @@ defmodule Day02 do
   end
 
   def updated_memory(noun, verb) do
-    ic = %Intcode{pointer: 0, memory: new(@memory_list)}
-    replace_at(ic.memory, 1, noun) |> replace_at(2, verb)
+    ic = %Intcode{pointer: 0, memory: Aja.Vector.new(@memory_list)}
+    Aja.Vector.replace_at(ic.memory, 1, noun) |> Aja.Vector.replace_at(2, verb)
   end
 
   def answer_part_a() do
@@ -202,7 +202,7 @@ defmodule Day02 do
     IO.puts("Part B answer: #{answer_part_b()}, correct: 8226")
   end
 
-  # [eric@linux-epth day02](dev)$ mix print_b
+  # [eric@linux-epth day02](dev)$ mix print_beta
   # [eric@linux-epth day02](dev)$ iex -S mix
   # Day02.answer_part_b()
   # 8226
